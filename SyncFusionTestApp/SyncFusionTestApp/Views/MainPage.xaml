@@ -1,27 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib"
-xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:chip="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:expander="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
-             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:SyncFusionTestApp;assembly=SyncFusionTestApp"
-             xmlns:viewModels="clr-namespace:SyncFusionTestApp;assembly=SyncFusionTestApp"
-             xmlns:system="clr-namespace:System;assembly=netstandard"
-             x:DataType="viewModels:MainPageViewModel"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:chip="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:expander="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:viewModels1="clr-namespace:SyncFusionTestApp.ViewModels;assembly=SyncFusionTestApp"
+             xmlns:models1="clr-namespace:SyncFusionTestApp.Models;assembly=SyncFusionTestApp"
+             xmlns:syncFusionTestApp="clr-namespace:SyncFusionTestApp;assembly=SyncFusionTestApp"
+             x:DataType="viewModels1:MainPageViewModel"
              mc:Ignorable="d"
-             x:Class="SyncFusionTestApp.MainPage"
+             x:Class="SyncFusionTestApp.Views.MainPage"
              x:Name="XamlPage"
              BackgroundColor="Beige">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <models:NegateBooleanConverter
+            <syncFusionTestApp:NegateBooleanConverter
                 x:Key="Inverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -71,14 +70,47 @@ xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XF
                     </expander:SfExpander.Header>
                     <expander:SfExpander.Content>
                         <StackLayout>
-                            <combobox:SfComboBox x:Name="ComboBox" />
+                            <combobox:SfComboBox HeightRequest="40"
+                                                 Margin="15,5,15,5"
+                                                 x:Name="ComboBox"
+                                                 FontFamily="{StaticResource RobotoBold}"
+                                                 IsEditableMode="False"
+                                                 DataSource="{Binding ListNamesObservableCollection, Mode=Default}"
+                                                 DisplayMemberPath="ListName"
+                                                 SelectedValue="{Binding ListNames, Mode=TwoWay}"
+                                                 SelectedValuePath="ListName"
+                                                 BackgroundColor="Transparent"
+                                                 BorderColor="Black"
+                                                 Watermark="{Binding ListName, Mode=TwoWay}"
+                                                 WatermarkColor="Black" />
                             <BoxView />
                             <StackLayout Margin="15,8,15,0"
                                                          Padding="0,0,0,0"
                                                          x:Name="TopStackLayout"
                                                          Orientation="Vertical">
-                                <combobox:SfComboBox x:Name="SfComboBox" />
-                                    <Grid ColumnSpacing="20"
+                                <combobox:SfComboBox HeightRequest="40"
+                                                     x:Name="ListItemComboBox"
+                                                     IsEditableMode="False"
+                                                     DataSource="{Binding ItemsObservableCollection, Mode=Default}"
+                                                     DisplayMemberPath="Name"
+                                                     SelectedValue="{Binding Items, Mode=TwoWay}"
+                                                     SelectedValuePath="Name"
+                                                     BackgroundColor="Transparent"
+                                                     BorderColor="Black">
+                                    <combobox:SfComboBox.CustomView>
+                                        <StackLayout x:Name="LabelStack"
+                                                                     Orientation="Horizontal"
+                                                                     BackgroundColor="Transparent">
+                                            <Label x:Name="ListItemLabel"
+                                                                   Text="{Binding Name, Mode=Default}"
+                                                                   TextColor="Black"
+                                                                   FontFamily="{StaticResource RobotoBold}"
+                                                                   VerticalTextAlignment="Center"
+                                                                   Margin="5,0" />
+                                        </StackLayout>
+                                    </combobox:SfComboBox.CustomView>
+                                </combobox:SfComboBox>
+                                <Grid ColumnSpacing="20"
                                                       HorizontalOptions="FillAndExpand"
                                                       Margin="0,0,0,5">
                                     <Grid.ColumnDefinitions>
@@ -147,22 +179,41 @@ xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XF
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <combobox:SfComboBox x:Name="SectionNameComboBox"
-                                                                         Grid.Row="0"
-                                                                         Grid.Column="0" />
-
+                                                         IsEditableMode="False"
+                                                         DataSource="{Binding SectionsObservableCollection, Mode=Default}"
+                                                         DisplayMemberPath="Section"
+                                                         SelectedValue="{Binding Sections, Mode=TwoWay}"
+                                                         BackgroundColor="Transparent"
+                                                         BorderColor="Black"
+                                                         HorizontalOptions="FillAndExpand"
+                                                         VerticalOptions="FillAndExpand"
+                                                         Grid.Row="0"
+                                                         Grid.Column="0">
+                                        <combobox:SfComboBox.CustomView>
+                                            <StackLayout x:Name="SectionLabelStack"
+                                                                         Orientation="Horizontal"
+                                                                         BackgroundColor="Transparent">
+                                                <Label x:Name="SectionNameLabel"
+                                                                       Text="{Binding Section, Mode=Default}"
+                                                                       TextColor="Black"
+                                                                       FontFamily="{StaticResource RobotoBold}"
+                                                                       VerticalTextAlignment="Center"
+                                                                       Margin="5,0" />
+                                            </StackLayout>
+                                        </combobox:SfComboBox.CustomView>
+                                    </combobox:SfComboBox>
                                     <inputLayout:SfTextInputLayout InputViewPadding="5"
-                                                                                       ContainerType="Outlined"
-                                                                                       ReserveSpaceForAssistiveLabels="False"
-                                                                                       UnfocusedColor="Black"
-                                                                                       WidthRequest="70"
-                                                                                       HeightRequest="40"
-                                                                                       HorizontalOptions="FillAndExpand"
-                                                                                       VerticalOptions="Center"
-                                                                                       Hint="Qty"
-                                                                                       Grid.Column="1"
-                                                                                       Grid.Row="0">
+                                                                   ContainerType="Outlined"
+                                                                   ReserveSpaceForAssistiveLabels="False"
+                                                                   UnfocusedColor="Black"
+                                                                   WidthRequest="70"
+                                                                   HeightRequest="40"
+                                                                   HorizontalOptions="FillAndExpand"
+                                                                   VerticalOptions="Center"
+                                                                   Hint="Qty"
+                                                                   Grid.Column="1"
+                                                                   Grid.Row="0">
                                         <Entry x:Name="QuantityEntry"
-                                               Text="Qnty"
                                                Keyboard="Numeric"
                                                IsTabStop="True"
                                                WidthRequest="70"
@@ -238,14 +289,14 @@ xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XF
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <chip:SfButton x:Name="MoveButton"
-                                                                 HorizontalOptions="FillAndExpand"
-                                                                 VerticalOptions="Center"
-                                                                 IsVisible="{Binding ShowMe, Mode=Default}"
-                                                                 IsTabStop="True"
-                                                                 HeightRequest="38"
-                                                                 BackgroundColor="DodgerBlue"
-                                                                 Grid.Row="0"
-                                                                 Grid.Column="0">
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               IsVisible="{Binding ShowMe, Mode=Default}"
+                                               IsTabStop="True"
+                                               HeightRequest="38"
+                                               BackgroundColor="DodgerBlue"
+                                               Grid.Row="0"
+                                               Grid.Column="0">
                                     <chip:SfButton.Content>
                                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
                                             <Grid.ColumnDefinitions>
@@ -254,6 +305,41 @@ xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XF
                                             </Grid.ColumnDefinitions>
                                             <Grid Padding="15,0,5,0">
                                                 <Label Text="&#xE7AC;"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalOptions="Center"
+                                                       VerticalTextAlignment="Center"
+                                                       HorizontalOptions="Start"
+                                                       FontSize="19"
+                                                       TextColor="White"
+                                                       FontFamily="{StaticResource FontIcon}" />
+                                            </Grid>
+                                            <Grid Grid.Column="1">
+                                                <Label HorizontalOptions="Center"
+                                                       HorizontalTextAlignment="Center"
+                                                       TextColor="White"
+                                                       VerticalTextAlignment="Center"
+                                                       VerticalOptions="Center"
+                                                       LineBreakMode="NoWrap"
+                                                       Text="Move" />
+                                            </Grid>
+                                        </Grid>
+                                    </chip:SfButton.Content>
+                                </chip:SfButton>
+                                <chip:SfButton x:Name="SaveButton"
+                                                                 BackgroundColor="DodgerBlue"
+                                                                 VerticalOptions="Center"
+                                                                 HorizontalOptions="FillAndExpand"
+                                                                 HeightRequest="38"
+                                                                 Grid.Row="0"
+                                                                 Grid.Column="2">
+                                    <chip:SfButton.Content>
+                                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Padding="10,0,5,0">
+                                                <Label Text="&#xE74E;"
                                                                        HorizontalTextAlignment="Center"
                                                                        VerticalOptions="Center"
                                                                        VerticalTextAlignment="Center"
@@ -264,49 +350,14 @@ xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XF
                                                 </Label>
                                             </Grid>
                                             <Grid Grid.Column="1">
-                                                <Label HorizontalOptions="Center"
-                                                                       HorizontalTextAlignment="Center"
+                                                <Label HorizontalOptions="Start"
+                                                                       HorizontalTextAlignment="Start"
                                                                        TextColor="White"
                                                                        VerticalTextAlignment="Center"
                                                                        VerticalOptions="Center"
                                                                        LineBreakMode="NoWrap"
-                                                                       Text="Move">
+                                                                       Text="Save">
                                                 </Label>
-                                            </Grid>
-                                        </Grid>
-                                    </chip:SfButton.Content>
-                                </chip:SfButton>
-                                <chip:SfButton x:Name="SaveButton"
-                                               BackgroundColor="DodgerBlue"
-                                               VerticalOptions="Center"
-                                               HorizontalOptions="FillAndExpand"
-                                               HeightRequest="38"
-                                               Grid.Row="0"
-                                               Grid.Column="2">
-                                    <chip:SfButton.Content>
-                                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="40" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid Padding="10,0,5,0">
-                                                <Label Text="&#xE74E;"
-                                                       HorizontalTextAlignment="Center"
-                                                       VerticalOptions="Center"
-                                                       VerticalTextAlignment="Center"
-                                                       HorizontalOptions="Start"
-                                                       FontSize="19"
-                                                       TextColor="White"
-                                                       FontFamily="{StaticResource FontIcon}" />
-                                            </Grid>
-                                            <Grid Grid.Column="1">
-                                                <Label HorizontalOptions="Start"
-                                                       HorizontalTextAlignment="Start"
-                                                       TextColor="White"
-                                                       VerticalTextAlignment="Center"
-                                                       VerticalOptions="Center"
-                                                       LineBreakMode="NoWrap"
-                                                       Text="Save" />
                                             </Grid>
                                         </Grid>
                                     </chip:SfButton.Content>
@@ -351,7 +402,7 @@ xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XF
                         </listview:GridLayout>
                     </listview:SfListView.LayoutManager>
                     <listview:SfListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Colors">
+                        <DataTemplate x:DataType="models1:Colors">
                             <ViewCell>
                                 <StackLayout>
                                     <border:SfBorder BorderColor="{Binding BdColor, Mode=Default}"

@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
-
 using Xamarin.Forms;
 
-namespace SyncFusionTestApp
+namespace SyncFusionTestApp.Models
 {
     public class Colors : INotifyPropertyChanged
     {

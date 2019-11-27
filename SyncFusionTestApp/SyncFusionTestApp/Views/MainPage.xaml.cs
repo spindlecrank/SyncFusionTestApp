@@ -1,12 +1,10 @@
 ﻿using Syncfusion.ListView.XForms;
-using Syncfusion.XForms.Accordion;
-
+using SyncFusionTestApp.Models;
+using SyncFusionTestApp.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using ItemTappedEventArgs = Xamarin.Forms.ItemTappedEventArgs;
-
-namespace SyncFusionTestApp
+namespace SyncFusionTestApp.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
@@ -26,12 +24,12 @@ namespace SyncFusionTestApp
             BindingContext = _viewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            //Build picker list of color names and colors
-            _viewModel.BuildColorsList();
+            //Build all lists for controls
+            await _viewModel.BuildAllListsAsync();
         }
 
         protected override void OnSizeAllocated(double width, double height)

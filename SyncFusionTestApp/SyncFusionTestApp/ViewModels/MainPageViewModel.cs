@@ -21,6 +21,21 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _listName = value;
+
+                if (string.IsNullOrEmpty(_listName))
+                    _listName = "Select a list to view...";
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("ListName");
             }
         }
@@ -33,6 +48,18 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _shared = value;
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("Shared");
             }
         }
@@ -45,6 +72,21 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _name = value;
+
+                if (string.IsNullOrEmpty(_name))
+                    _name = "Pick an Item...";
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("Name");
             }
         }
@@ -56,6 +98,18 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _unitOfIssue = value;
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("UnitOfIssue");
             }
         }
@@ -68,6 +122,18 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _description = value;
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("Description");
             }
         }
@@ -80,7 +146,22 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _section = value;
-                OnPropertyChanged("ListName");
+
+                if (string.IsNullOrEmpty(_section))
+                    _section = "Pick a Section...";
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
+                OnPropertyChanged("Section");
             }
         }
 
@@ -92,6 +173,18 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _priority = value;
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("Priority");
             }
         }
@@ -128,7 +221,25 @@ namespace SyncFusionTestApp.ViewModels
             get => _listNames;
             set
             {
-                _listNames = value; 
+                _listNames = value;
+
+                if (ListNames != null)
+                {
+                    ListName = _listNames.ListName;
+                    Shared = _listNames.Shared;
+                }
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("ListNames");
             }
         }
@@ -142,6 +253,25 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _items = value;
+
+                if (Items != null)
+                {
+                    Name = _items.Name;
+                    UnitOfIssue = _items.UnitOfIssue;
+                    Description = _items.Description;
+                }
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("Items");
             }
         }
@@ -154,22 +284,56 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _sections = value;
+
+                if (Sections != null)
+                {
+                    Section = _sections.Section;
+                    Priority = _sections.Priority;
+                }
+
+                MasterModel = new MasterModel
+                {
+                    ListName = ListName,
+                    Shared = Shared,
+                    Name = Name,
+                    UnitOfIssue = UnitOfIssue,
+                    Description = Description,
+                    Section = Section,
+                    Priority = Priority
+                };
+
                 OnPropertyChanged("Sections");
             }
         }
+
+        private MasterModel _masterModel;
+
+        public MasterModel MasterModel
+        {
+            get => _masterModel;
+            set
+            {
+                _masterModel = value;
+                OnPropertyChanged("MasterModel");
+            }
+        }
+
 
 
         private readonly List<Colors> _subColors = new List<Colors>();
         private List<ListNames> _namesList = new List<ListNames>();
         private List<Items> _itemsList = new List<Items>();
         private List<Sections> _sectionsList = new List<Sections>();
+        private List<MasterModel> _masterModelList = new List<MasterModel>();
 
         public ObservableCollection<Colors> ColorsObservableCollection { get; set; }
         public ObservableCollection<ListNames> ListNamesObservableCollection { get; set; }
         public ObservableCollection<Items> ItemsObservableCollection { get; set; }
         public ObservableCollection<Sections> SectionsObservableCollection { get; set; }
-
+        public ObservableCollection<MasterModel> MasterModelObservableCollection { get; set; }
+        
         #endregion
+
 
         #region CTOR
 
@@ -179,14 +343,21 @@ namespace SyncFusionTestApp.ViewModels
             ListNamesObservableCollection = new ObservableCollection<ListNames>();
             ItemsObservableCollection = new ObservableCollection<Items>();
             SectionsObservableCollection = new ObservableCollection<Sections>();
+            MasterModelObservableCollection = new ObservableCollection<MasterModel>();
+
+            Name = null;
+            Section = null;
         }
 
         #endregion
 
+        #region Public Methods
+
         public async Task BuildAllListsAsync()
         {
-            await BuildListNames();
-            await BuildItems();
+            await BuildListNamesAsync();
+            await BuildItemsAsync();
+            await BuildSectionsAsync();
             BuildColorsList();
         }
 
@@ -201,7 +372,11 @@ namespace SyncFusionTestApp.ViewModels
             ColorsObservableCollection.Insert(index, item);
         }
 
-        private async Task BuildListNames()
+        #endregion
+
+        #region Private Methods
+
+        private async Task BuildListNamesAsync()
         {
             _namesList = await ListNames.BuildNamesList();
 
@@ -211,7 +386,7 @@ namespace SyncFusionTestApp.ViewModels
             }
         }
 
-        private async Task BuildItems()
+        private async Task BuildItemsAsync()
         {
             _itemsList = await Items.BuildItemsList();
 
@@ -221,7 +396,7 @@ namespace SyncFusionTestApp.ViewModels
             }
         }
 
-        private async Task BuildSections()
+        private async Task BuildSectionsAsync()
         {
             _sectionsList = await Sections.BuildSectionsList();
 
@@ -231,7 +406,7 @@ namespace SyncFusionTestApp.ViewModels
             }
         }
 
-        public void BuildColorsList()
+        private void BuildColorsList()
         {
             if (!testBool)
                 IsExpanded = true;
@@ -1274,6 +1449,10 @@ namespace SyncFusionTestApp.ViewModels
                 ColorsObservableCollection?.Add(subColor);
             }
         }
+        
+
+        #endregion
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

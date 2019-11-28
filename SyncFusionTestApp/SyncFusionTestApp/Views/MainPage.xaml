@@ -73,6 +73,7 @@
                             <combobox:SfComboBox HeightRequest="40"
                                                  Margin="15,5,15,5"
                                                  x:Name="ComboBox"
+                                                 SelectionChanged="ComboBox_OnSelectionChanged"
                                                  FontFamily="{StaticResource RobotoBold}"
                                                  IsEditableMode="False"
                                                  DataSource="{Binding ListNamesObservableCollection, Mode=Default}"
@@ -91,6 +92,7 @@
                                 <combobox:SfComboBox HeightRequest="40"
                                                      x:Name="ListItemComboBox"
                                                      IsEditableMode="False"
+                                                     SelectionChanged="ListItemComboBox_OnSelectionChanged"
                                                      DataSource="{Binding ItemsObservableCollection, Mode=Default}"
                                                      DisplayMemberPath="Name"
                                                      SelectedValue="{Binding Items, Mode=TwoWay}"
@@ -180,6 +182,7 @@
                                     </Grid.RowDefinitions>
                                     <combobox:SfComboBox x:Name="SectionNameComboBox"
                                                          IsEditableMode="False"
+                                                         SelectionChanged="SectionNameComboBox_OnSelectionChanged"
                                                          DataSource="{Binding SectionsObservableCollection, Mode=Default}"
                                                          DisplayMemberPath="Section"
                                                          SelectedValue="{Binding Sections, Mode=TwoWay}"

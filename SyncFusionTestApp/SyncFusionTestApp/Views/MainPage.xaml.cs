@@ -3,6 +3,7 @@ using SyncFusionTestApp.Models;
 using SyncFusionTestApp.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace SyncFusionTestApp.Views
 {
@@ -70,6 +71,27 @@ namespace SyncFusionTestApp.Views
             _viewModel.DoUpdate(item);
 
             listView.LayoutManager.ScrollToRowIndex(index / gridLayout.SpanCount, Syncfusion.ListView.XForms.ScrollToPosition.Center, true);
+        }
+
+        private void ListItemComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Value != null)
+                _viewModel.Items = e.Value as Items;
+
+            if (_viewModel.Name == null) ListItemComboBox.SelectedItem = null;
+        }
+
+        private void SectionNameComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Value != null)
+                _viewModel.Sections = e.Value as Sections;
+
+            if (_viewModel.Section == null) SectionNameComboBox.SelectedItem = null;
+        }
+
+        private void ComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _viewModel.ListNames = e.Value as ListNames;
         }
     }
 }

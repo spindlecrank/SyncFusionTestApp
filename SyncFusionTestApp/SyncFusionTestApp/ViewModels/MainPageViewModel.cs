@@ -353,9 +353,15 @@ namespace SyncFusionTestApp.ViewModels
             ColorsObservableCollection.Remove(item);
 
             if (item.BgColor != Color.Black)
+            {
                 item.BgColor = Color.Black;
+                item.FntColor = Color.White;
+            }
             else if (item.BgColor == Color.Black)
+            {
                 item.BgColor = item.BdColor;
+                item.FntColor = Color.Black;
+            }
 
             ColorsObservableCollection.Insert(index, item);
         }

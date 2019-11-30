@@ -375,6 +375,8 @@
                                      ItemsSource="{Binding ColorsObservableCollection, Mode=Default}"
                                      ItemTapped="ListView_OnItemTapped"
                                      SelectionMode="SingleDeselect"
+                                     SelectionChanged="ListView_OnSelectionChanged"
+                                     Loaded="ListView_OnLoaded"
                                      SelectionGesture="Tap"
                                      HorizontalOptions="FillAndExpand"
                                      VerticalOptions="FillAndExpand">

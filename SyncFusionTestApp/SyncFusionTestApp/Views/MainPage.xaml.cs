@@ -1,4 +1,5 @@
-﻿using Syncfusion.ListView.XForms;
+﻿using System.Threading.Tasks;
+using Syncfusion.ListView.XForms;
 using SyncFusionTestApp.Models;
 using SyncFusionTestApp.ViewModels;
 using Xamarin.Essentials;
@@ -92,6 +93,21 @@ namespace SyncFusionTestApp.Views
         private void ComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _viewModel.ListNames = e.Value as ListNames;
+        }
+
+        private async void ListView_OnSelectionChanged(object sender, ItemSelectionChangedEventArgs e)
+        {
+            await Task.Delay(100);
+            listView.SelectedItem = null;
+        }
+
+        private void ListView_OnLoaded(object sender, ListViewLoadedEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Delay(100);
+                listView.RefreshListViewItem(0, _viewModel.ColorsObservableCollection.Count, true);
+            });
         }
     }
 }

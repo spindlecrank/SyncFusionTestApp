@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using SyncFusionTestApp.Models;
+
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Threading.Tasks;
-using SyncFusionTestApp.Models;
+
 using Xamarin.Forms;
 
 namespace SyncFusionTestApp.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : BaseViewModel
     {
         #region Properties and Fields
 
@@ -201,19 +202,6 @@ namespace SyncFusionTestApp.ViewModels
             }
         }
 
-
-        private bool _isExpanded;
-
-        public bool IsExpanded
-        {
-            get => _isExpanded;
-            set
-            {
-                _isExpanded = value;
-                OnPropertyChanged("IsExpanded");
-            }
-        }
-
         private ListNames _listNames;
 
         public ListNames ListNames
@@ -333,8 +321,6 @@ namespace SyncFusionTestApp.ViewModels
         public ObservableCollection<MasterModel> MasterModelObservableCollection { get; set; }
         
         #endregion
-
-
         #region CTOR
 
         public MainPageViewModel()
@@ -350,7 +336,6 @@ namespace SyncFusionTestApp.ViewModels
         }
 
         #endregion
-
         #region Public Methods
 
         public async Task BuildAllListsAsync()
@@ -367,13 +352,21 @@ namespace SyncFusionTestApp.ViewModels
 
             ColorsObservableCollection.Remove(item);
 
-            item.BgColor = Color.Black;
+            if (item.BgColor != Color.Black)
+            {
+                item.BgColor = Color.Black;
+                item.FntColor = Color.White;
+            }
+            else if (item.BgColor == Color.Black)
+            {
+                item.BgColor = item.BdColor;
+                item.FntColor = Color.Black;
+            }
 
             ColorsObservableCollection.Insert(index, item);
         }
 
         #endregion
-
         #region Private Methods
 
         private async Task BuildListNamesAsync()
@@ -1452,13 +1445,5 @@ namespace SyncFusionTestApp.ViewModels
         
 
         #endregion
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Syncfusion.ListView.XForms;
 using SyncFusionTestApp.Models;
 using SyncFusionTestApp.ViewModels;
@@ -108,6 +109,13 @@ namespace SyncFusionTestApp.Views
                 await Task.Delay(100);
                 listView.RefreshListViewItem(0, _viewModel.ColorsObservableCollection.Count, true);
             });
+        }
+
+        private async void PullToRefresh_OnRefreshing(object sender, EventArgs e)
+        {
+            _viewModel.IsRefreshing = true;
+            await _viewModel.BuildAllListsRefreshAsync();
+            _viewModel.IsRefreshing = false;
         }
     }
 }

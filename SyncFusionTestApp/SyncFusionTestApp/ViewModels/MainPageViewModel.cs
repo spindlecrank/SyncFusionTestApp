@@ -321,6 +321,7 @@ namespace SyncFusionTestApp.ViewModels
         public ObservableCollection<MasterModel> MasterModelObservableCollection { get; set; }
         
         #endregion
+
         #region CTOR
 
         public MainPageViewModel()
@@ -336,9 +337,18 @@ namespace SyncFusionTestApp.ViewModels
         }
 
         #endregion
+
         #region Public Methods
 
         public async Task BuildAllListsAsync()
+        {
+            await BuildListNamesAsync();
+            await BuildItemsAsync();
+            await BuildSectionsAsync();
+            BuildColorsList();
+        }
+
+        public async Task BuildAllListsRefreshAsync()
         {
             await BuildListNamesAsync();
             await BuildItemsAsync();
@@ -367,6 +377,7 @@ namespace SyncFusionTestApp.ViewModels
         }
 
         #endregion
+
         #region Private Methods
 
         private async Task BuildListNamesAsync()

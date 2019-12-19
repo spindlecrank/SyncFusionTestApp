@@ -80,12 +80,13 @@
                                                    VerticalOptions="FillAndExpand" />
                                     </Grid>
                                 </border:SfBorder>
-                            <Grid Grid.Row="1">
+                            <StackLayout Grid.Row="1">
                                 <expander:SfExpander x:Name="Expander"
                                                      HeaderBackgroundColor="Transparent"
                                                      BackgroundColor="Transparent"
                                                      DynamicSizeMode="Content"
-                                                     Margin="15,0,15,0">
+                                                     Margin="15,0,15,0"
+                                                     IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
                                     <expander:SfExpander.Header>
                                         <Grid>
                                             <Label
@@ -414,7 +415,7 @@
                                         </StackLayout>
                                     </expander:SfExpander.Content>
                                 </expander:SfExpander>
-                            </Grid>
+                            </StackLayout>
                             <StackLayout Grid.Row="2">
                                 <listview:SfListView x:Name="listView" ItemSize="50"
                                                      ItemsSource="{Binding ColorsObservableCollection, Mode=Default}"

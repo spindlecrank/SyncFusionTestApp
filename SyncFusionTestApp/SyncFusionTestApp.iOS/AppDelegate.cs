@@ -31,6 +31,8 @@ namespace SyncFusionTestApp.iOS
             SfBorderRenderer.Init();
             SfListViewRenderer.Init();
             SfExpanderRenderer.Init();
+            SfBorderRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

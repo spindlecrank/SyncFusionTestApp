@@ -14,6 +14,7 @@
              xmlns:viewModels1="clr-namespace:SyncFusionTestApp.ViewModels;assembly=SyncFusionTestApp"
              xmlns:models1="clr-namespace:SyncFusionTestApp.Models;assembly=SyncFusionTestApp"
              xmlns:syncFusionTestApp="clr-namespace:SyncFusionTestApp;assembly=SyncFusionTestApp"
+             xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              x:DataType="viewModels1:MainPageViewModel"
              mc:Ignorable="d"
              x:Class="SyncFusionTestApp.Views.MainPage"
@@ -26,119 +27,237 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <pulltorefresh:SfPullToRefresh x:Name="pullToRefresh"
-                                       ProgressStrokeColor="DodgerBlue"
-                                       Margin="15,5,15,5"
-                                       IsRefreshing="{Binding IsRefreshing, Mode=Default}"
-                                       Refreshing="PullToRefresh_OnRefreshing">
-            <pulltorefresh:SfPullToRefresh.PullableContent>
-                <StackLayout HorizontalOptions="FillAndExpand"
-                             VerticalOptions="FillAndExpand"
-                             Margin="15,15,15,15">
-                    <StackLayout>
-                        <expander:SfExpander x:Name="Expander"
-                                             HeaderBackgroundColor="Transparent"
-                                             BackgroundColor="Transparent"
-                                             DynamicSizeMode="Content"
-                                             IsExpanded="{Binding IsExpanded, Mode=TwoWay}"
-                                             Margin="15,0,15,0">
-                            <expander:SfExpander.Header>
-                                <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="Center"
-                                             BackgroundColor="Transparent">
-                                    <StackLayout.HeightRequest>
-                                        <x:OnPlatform Android="50" iOS="30" UWP="20" />
-                                    </StackLayout.HeightRequest>
-                                    <Label
-                                        Text="Tap Here To Add A List Name OR Tap A List Entry To Edit It"
-                                        FontSize="16"
-                                        TextColor="Black"
-                                        FontAttributes="Bold"
-                                        FontFamily="{StaticResource RobotoBold}"
-                                        LineBreakMode="WordWrap"
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        IsVisible="{Binding IsExpanded, Mode=OneWay, Converter={StaticResource Inverter}}" />
-                                    <Label Text="Tap Here To Close The Editor"
-                                           FontSize="16"
-                                           TextColor="Black"
-                                           FontAttributes="Bold"
-                                           FontFamily="{StaticResource RobotoBold}"
-                                           LineBreakMode="WordWrap"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="Center"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           IsVisible="{Binding IsExpanded, Mode=Default}" />
-                                </StackLayout>
-                            </expander:SfExpander.Header>
-                            <expander:SfExpander.Content>
-                                <StackLayout>
-                                    <combobox:SfComboBox HeightRequest="40"
-                                                         Margin="15,5,15,5"
-                                                         x:Name="ComboBox"
-                                                         SelectionChanged="ComboBox_OnSelectionChanged"
-                                                         FontFamily="{StaticResource RobotoBold}"
-                                                         IsEditableMode="False"
-                                                         DataSource="{Binding ListNamesObservableCollection, Mode=Default}"
-                                                         DisplayMemberPath="ListName"
-                                                         SelectedValue="{Binding ListNames, Mode=TwoWay}"
-                                                         SelectedValuePath="ListName"
-                                                         BackgroundColor="Transparent"
-                                                         BorderColor="Black"
-                                                         Watermark="{Binding ListName, Mode=TwoWay}"
-                                                         WatermarkColor="Black" />
-                                    <BoxView />
-                                    <StackLayout Margin="15,8,15,0"
-                                                 Padding="0,0,0,0"
-                                                 x:Name="TopStackLayout"
-                                                 Orientation="Vertical">
+        <Grid>
+            <graphics:SfGradientView>
+                <graphics:SfGradientView.BackgroundBrush>
+                    <graphics:SfLinearGradientBrush>
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Color="GhostWhite" Offset="0.0" />
+                            <graphics:SfGradientStop Color="Beige" Offset="1.0" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </graphics:SfGradientView.BackgroundBrush>
+            </graphics:SfGradientView>
+            <pulltorefresh:SfPullToRefresh x:Name="pullToRefresh"
+                                           ProgressStrokeColor="DodgerBlue"
+                                           Margin="15,5,15,5"
+                                           IsRefreshing="{Binding IsRefreshing, Mode=Default}"
+                                           Refreshing="PullToRefresh_OnRefreshing">
+                <pulltorefresh:SfPullToRefresh.PullableContent>
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Margin="15,15,15,15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <expander:SfExpander x:Name="Expander"
+                                                 HeaderBackgroundColor="Transparent"
+                                                 BackgroundColor="Transparent"
+                                                 DynamicSizeMode="Content"
+                                                 Margin="15,0,15,0">
+                                <expander:SfExpander.Header>
+                                    <Grid>
+                                        <Label
+                                            Text="Tap Here To Add A List Name OR Tap A List Entry To Edit It"
+                                            FontSize="16"
+                                            TextColor="Black"
+                                            FontAttributes="Bold"
+                                            FontFamily="{StaticResource RobotoBold}"
+                                            LineBreakMode="WordWrap"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            IsVisible="{Binding IsExpanded, Mode=OneWay, Converter={StaticResource Inverter}}" />
+                                        <Label Text="Tap Here To Close The Editor"
+                                               FontSize="16"
+                                               TextColor="Black"
+                                               FontAttributes="Bold"
+                                               FontFamily="{StaticResource RobotoBold}"
+                                               LineBreakMode="WordWrap"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="Center"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="Center"
+                                               IsVisible="{Binding IsExpanded, Mode=Default}" />
+                                    </Grid>
+                                </expander:SfExpander.Header>
+                                <expander:SfExpander.Content>
+                                    <StackLayout>
                                         <combobox:SfComboBox HeightRequest="40"
-                                                             x:Name="ListItemComboBox"
+                                                             Margin="15,5,15,5"
+                                                             x:Name="ComboBox"
+                                                             SelectionChanged="ComboBox_OnSelectionChanged"
+                                                             FontFamily="{StaticResource RobotoBold}"
                                                              IsEditableMode="False"
-                                                             SelectionChanged="ListItemComboBox_OnSelectionChanged"
-                                                             DataSource="{Binding ItemsObservableCollection, Mode=Default}"
-                                                             DisplayMemberPath="Name"
-                                                             SelectedValue="{Binding Items, Mode=TwoWay}"
-                                                             SelectedValuePath="Name"
+                                                             DataSource="{Binding ListNamesObservableCollection, Mode=Default}"
+                                                             DisplayMemberPath="ListName"
+                                                             SelectedValue="{Binding ListNames, Mode=TwoWay}"
+                                                             SelectedValuePath="ListName"
                                                              BackgroundColor="Transparent"
-                                                             BorderColor="Black">
-                                            <combobox:SfComboBox.CustomView>
-                                                <StackLayout x:Name="LabelStack"
-                                                             Orientation="Horizontal"
-                                                             BackgroundColor="Transparent">
-                                                    <Label x:Name="ListItemLabel"
-                                                           Text="{Binding Name, Mode=Default}"
-                                                           TextColor="Black"
-                                                           FontFamily="{StaticResource RobotoBold}"
-                                                           VerticalTextAlignment="Center"
-                                                           Margin="5,0" />
-                                                </StackLayout>
-                                            </combobox:SfComboBox.CustomView>
-                                        </combobox:SfComboBox>
-                                        <Grid ColumnSpacing="20"
-                                              HorizontalOptions="FillAndExpand"
-                                              Margin="0,0,0,5">
+                                                             BorderColor="Black"
+                                                             Watermark="{Binding ListName, Mode=TwoWay}"
+                                                             WatermarkColor="Black" />
+                                        <BoxView />
+                                        <StackLayout Margin="15,8,15,0"
+                                                     Padding="0,0,0,0"
+                                                     x:Name="TopStackLayout"
+                                                     Orientation="Vertical">
+                                            <combobox:SfComboBox HeightRequest="40"
+                                                                 x:Name="ListItemComboBox"
+                                                                 IsEditableMode="False"
+                                                                 SelectionChanged="ListItemComboBox_OnSelectionChanged"
+                                                                 DataSource="{Binding ItemsObservableCollection, Mode=Default}"
+                                                                 DisplayMemberPath="Name"
+                                                                 SelectedValue="{Binding Items, Mode=TwoWay}"
+                                                                 SelectedValuePath="Name"
+                                                                 BackgroundColor="Transparent"
+                                                                 BorderColor="Black">
+                                                <combobox:SfComboBox.CustomView>
+                                                    <StackLayout x:Name="LabelStack"
+                                                                 Orientation="Horizontal"
+                                                                 BackgroundColor="Transparent">
+                                                        <Label x:Name="ListItemLabel"
+                                                               Text="{Binding Name, Mode=Default}"
+                                                               TextColor="Black"
+                                                               FontFamily="{StaticResource RobotoBold}"
+                                                               VerticalTextAlignment="Center"
+                                                               Margin="5,0" />
+                                                    </StackLayout>
+                                                </combobox:SfComboBox.CustomView>
+                                            </combobox:SfComboBox>
+                                            <Grid ColumnSpacing="20"
+                                                  HorizontalOptions="FillAndExpand"
+                                                  Margin="0,0,0,5">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition>
+                                                        <ColumnDefinition.Width>
+                                                            <OnPlatform x:TypeArguments="GridLength">
+                                                                <On Platform="UWP">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Default="60*" />
+                                                                </On>
+                                                                <On Platform="Android">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Tablet="60*"
+                                                                             Phone="75*" />
+                                                                </On>
+                                                                <On Platform="iOS">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Tablet="60*"
+                                                                             Phone="60*" />
+                                                                </On>
+                                                            </OnPlatform>
+                                                        </ColumnDefinition.Width>
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition>
+                                                        <ColumnDefinition.Width>
+                                                            <OnPlatform x:TypeArguments="GridLength">
+                                                                <On Platform="UWP">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Default="4*" />
+                                                                </On>
+                                                                <On Platform="Android">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Tablet="8*"
+                                                                             Phone="15*" />
+                                                                </On>
+                                                                <On Platform="iOS">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Tablet="15*"
+                                                                             Phone="15*" />
+                                                                </On>
+                                                            </OnPlatform>
+                                                        </ColumnDefinition.Width>
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition>
+                                                        <ColumnDefinition.Width>
+                                                            <OnPlatform x:TypeArguments="GridLength">
+                                                                <On Platform="UWP">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Default="36*" />
+                                                                </On>
+                                                                <On Platform="Android">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Tablet="32*"
+                                                                             Phone="25*" />
+                                                                </On>
+                                                                <On Platform="iOS">
+                                                                    <OnIdiom x:TypeArguments="GridLength"
+                                                                             Tablet="25*"
+                                                                             Phone="10*" />
+                                                                </On>
+                                                            </OnPlatform>
+                                                        </ColumnDefinition.Width>
+                                                    </ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <combobox:SfComboBox x:Name="SectionNameComboBox"
+                                                                     IsEditableMode="False"
+                                                                     SelectionChanged="SectionNameComboBox_OnSelectionChanged"
+                                                                     DataSource="{Binding SectionsObservableCollection, Mode=Default}"
+                                                                     DisplayMemberPath="Section"
+                                                                     SelectedValue="{Binding Sections, Mode=TwoWay}"
+                                                                     BackgroundColor="Transparent"
+                                                                     BorderColor="Black"
+                                                                     HorizontalOptions="FillAndExpand"
+                                                                     VerticalOptions="FillAndExpand"
+                                                                     Grid.Row="0"
+                                                                     Grid.Column="0">
+                                                    <combobox:SfComboBox.CustomView>
+                                                        <StackLayout x:Name="SectionLabelStack"
+                                                                     Orientation="Horizontal"
+                                                                     BackgroundColor="Transparent">
+                                                            <Label x:Name="SectionNameLabel"
+                                                                   Text="{Binding Section, Mode=Default}"
+                                                                   TextColor="Black"
+                                                                   FontFamily="{StaticResource RobotoBold}"
+                                                                   VerticalTextAlignment="Center"
+                                                                   Margin="5,0" />
+                                                        </StackLayout>
+                                                    </combobox:SfComboBox.CustomView>
+                                                </combobox:SfComboBox>
+                                                <inputLayout:SfTextInputLayout InputViewPadding="5"
+                                                                               ContainerType="Outlined"
+                                                                               ReserveSpaceForAssistiveLabels="False"
+                                                                               UnfocusedColor="Black"
+                                                                               WidthRequest="70"
+                                                                               HeightRequest="40"
+                                                                               HorizontalOptions="FillAndExpand"
+                                                                               VerticalOptions="Center"
+                                                                               Hint="Qty"
+                                                                               Grid.Column="1"
+                                                                               Grid.Row="0">
+                                                    <Entry x:Name="QuantityEntry"
+                                                           Keyboard="Numeric"
+                                                           IsTabStop="True"
+                                                           WidthRequest="70"
+                                                           VerticalOptions="EndAndExpand" />
+                                                </inputLayout:SfTextInputLayout>
+                                            </Grid>
+                                        </StackLayout>
+                                        <Grid x:Name="LastRowGrid"
+                                              Margin="15,0,15,0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition>
                                                     <ColumnDefinition.Width>
                                                         <OnPlatform x:TypeArguments="GridLength">
                                                             <On Platform="UWP">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Default="60*" />
+                                                                         Default="33*" />
                                                             </On>
                                                             <On Platform="Android">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Tablet="60*"
-                                                                         Phone="75*" />
+                                                                         Tablet="33*"
+                                                                         Phone="33*" />
                                                             </On>
                                                             <On Platform="iOS">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Tablet="60*"
-                                                                         Phone="60*" />
+                                                                         Tablet="33*"
+                                                                         Phone="33*" />
                                                             </On>
                                                         </OnPlatform>
                                                     </ColumnDefinition.Width>
@@ -148,17 +267,17 @@
                                                         <OnPlatform x:TypeArguments="GridLength">
                                                             <On Platform="UWP">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Default="4*" />
+                                                                         Default="33*" />
                                                             </On>
                                                             <On Platform="Android">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Tablet="8*"
-                                                                         Phone="15*" />
+                                                                         Tablet="33*"
+                                                                         Phone="33*" />
                                                             </On>
                                                             <On Platform="iOS">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Tablet="15*"
-                                                                         Phone="15*" />
+                                                                         Tablet="33*"
+                                                                         Phone="33*" />
                                                             </On>
                                                         </OnPlatform>
                                                     </ColumnDefinition.Width>
@@ -168,17 +287,17 @@
                                                         <OnPlatform x:TypeArguments="GridLength">
                                                             <On Platform="UWP">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Default="36*" />
+                                                                         Default="33*" />
                                                             </On>
                                                             <On Platform="Android">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Tablet="32*"
-                                                                         Phone="25*" />
+                                                                         Tablet="33*"
+                                                                         Phone="33*" />
                                                             </On>
                                                             <On Platform="iOS">
                                                                 <OnIdiom x:TypeArguments="GridLength"
-                                                                         Tablet="25*"
-                                                                         Phone="10*" />
+                                                                         Tablet="33*"
+                                                                         Phone="33*" />
                                                             </On>
                                                         </OnPlatform>
                                                     </ColumnDefinition.Width>
@@ -187,271 +306,161 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <combobox:SfComboBox x:Name="SectionNameComboBox"
-                                                                 IsEditableMode="False"
-                                                                 SelectionChanged="SectionNameComboBox_OnSelectionChanged"
-                                                                 DataSource="{Binding SectionsObservableCollection, Mode=Default}"
-                                                                 DisplayMemberPath="Section"
-                                                                 SelectedValue="{Binding Sections, Mode=TwoWay}"
-                                                                 BackgroundColor="Transparent"
-                                                                 BorderColor="Black"
-                                                                 HorizontalOptions="FillAndExpand"
-                                                                 VerticalOptions="FillAndExpand"
-                                                                 Grid.Row="0"
-                                                                 Grid.Column="0">
-                                                <combobox:SfComboBox.CustomView>
-                                                    <StackLayout x:Name="SectionLabelStack"
-                                                                 Orientation="Horizontal"
-                                                                 BackgroundColor="Transparent">
-                                                        <Label x:Name="SectionNameLabel"
-                                                               Text="{Binding Section, Mode=Default}"
-                                                               TextColor="Black"
-                                                               FontFamily="{StaticResource RobotoBold}"
-                                                               VerticalTextAlignment="Center"
-                                                               Margin="5,0" />
-                                                    </StackLayout>
-                                                </combobox:SfComboBox.CustomView>
-                                            </combobox:SfComboBox>
-                                            <inputLayout:SfTextInputLayout InputViewPadding="5"
-                                                                           ContainerType="Outlined"
-                                                                           ReserveSpaceForAssistiveLabels="False"
-                                                                           UnfocusedColor="Black"
-                                                                           WidthRequest="70"
-                                                                           HeightRequest="40"
-                                                                           HorizontalOptions="FillAndExpand"
-                                                                           VerticalOptions="Center"
-                                                                           Hint="Qty"
-                                                                           Grid.Column="1"
-                                                                           Grid.Row="0">
-                                                <Entry x:Name="QuantityEntry"
-                                                       Keyboard="Numeric"
-                                                       IsTabStop="True"
-                                                       WidthRequest="70"
-                                                       VerticalOptions="EndAndExpand" />
-                                            </inputLayout:SfTextInputLayout>
+                                            <chip:SfButton x:Name="MoveButton"
+                                                           HorizontalOptions="FillAndExpand"
+                                                           VerticalOptions="Center"
+                                                           IsVisible="{Binding ShowMe, Mode=Default}"
+                                                           IsTabStop="True"
+                                                           HeightRequest="38"
+                                                           BackgroundColor="DodgerBlue"
+                                                           Grid.Row="0"
+                                                           Grid.Column="0">
+                                                <chip:SfButton.Content>
+                                                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="45" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid Padding="15,0,5,0">
+                                                            <Label Text="&#xE7AC;"
+                                                                   HorizontalTextAlignment="Center"
+                                                                   VerticalOptions="Center"
+                                                                   VerticalTextAlignment="Center"
+                                                                   HorizontalOptions="Start"
+                                                                   FontSize="19"
+                                                                   TextColor="White"
+                                                                   FontFamily="{StaticResource FontIcon}" />
+                                                        </Grid>
+                                                        <Grid Grid.Column="1">
+                                                            <Label HorizontalOptions="Center"
+                                                                   HorizontalTextAlignment="Center"
+                                                                   TextColor="White"
+                                                                   VerticalTextAlignment="Center"
+                                                                   VerticalOptions="Center"
+                                                                   LineBreakMode="NoWrap"
+                                                                   Text="Move" />
+                                                        </Grid>
+                                                    </Grid>
+                                                </chip:SfButton.Content>
+                                            </chip:SfButton>
+                                            <chip:SfButton x:Name="SaveButton"
+                                                           BackgroundColor="DodgerBlue"
+                                                           VerticalOptions="Center"
+                                                           HorizontalOptions="FillAndExpand"
+                                                           HeightRequest="38"
+                                                           Grid.Row="0"
+                                                           Grid.Column="2">
+                                                <chip:SfButton.Content>
+                                                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="40" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid Padding="10,0,5,0">
+                                                            <Label Text="&#xE74E;"
+                                                                   HorizontalTextAlignment="Center"
+                                                                   VerticalOptions="Center"
+                                                                   VerticalTextAlignment="Center"
+                                                                   HorizontalOptions="Start"
+                                                                   FontSize="19"
+                                                                   TextColor="White"
+                                                                   FontFamily="{StaticResource FontIcon}">
+                                                            </Label>
+                                                        </Grid>
+                                                        <Grid Grid.Column="1">
+                                                            <Label HorizontalOptions="Start"
+                                                                   HorizontalTextAlignment="Start"
+                                                                   TextColor="White"
+                                                                   VerticalTextAlignment="Center"
+                                                                   VerticalOptions="Center"
+                                                                   LineBreakMode="NoWrap"
+                                                                   Text="Save">
+                                                            </Label>
+                                                        </Grid>
+                                                    </Grid>
+                                                </chip:SfButton.Content>
+                                            </chip:SfButton>
                                         </Grid>
                                     </StackLayout>
-                                    <Grid x:Name="LastRowGrid"
-                                          Margin="15,0,15,0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition>
-                                                <ColumnDefinition.Width>
-                                                    <OnPlatform x:TypeArguments="GridLength">
-                                                        <On Platform="UWP">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Default="33*" />
-                                                        </On>
-                                                        <On Platform="Android">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Tablet="33*"
-                                                                     Phone="33*" />
-                                                        </On>
-                                                        <On Platform="iOS">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Tablet="33*"
-                                                                     Phone="33*" />
-                                                        </On>
-                                                    </OnPlatform>
-                                                </ColumnDefinition.Width>
-                                            </ColumnDefinition>
-                                            <ColumnDefinition>
-                                                <ColumnDefinition.Width>
-                                                    <OnPlatform x:TypeArguments="GridLength">
-                                                        <On Platform="UWP">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Default="33*" />
-                                                        </On>
-                                                        <On Platform="Android">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Tablet="33*"
-                                                                     Phone="33*" />
-                                                        </On>
-                                                        <On Platform="iOS">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Tablet="33*"
-                                                                     Phone="33*" />
-                                                        </On>
-                                                    </OnPlatform>
-                                                </ColumnDefinition.Width>
-                                            </ColumnDefinition>
-                                            <ColumnDefinition>
-                                                <ColumnDefinition.Width>
-                                                    <OnPlatform x:TypeArguments="GridLength">
-                                                        <On Platform="UWP">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Default="33*" />
-                                                        </On>
-                                                        <On Platform="Android">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Tablet="33*"
-                                                                     Phone="33*" />
-                                                        </On>
-                                                        <On Platform="iOS">
-                                                            <OnIdiom x:TypeArguments="GridLength"
-                                                                     Tablet="33*"
-                                                                     Phone="33*" />
-                                                        </On>
-                                                    </OnPlatform>
-                                                </ColumnDefinition.Width>
-                                            </ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <chip:SfButton x:Name="MoveButton"
-                                                       HorizontalOptions="FillAndExpand"
-                                                       VerticalOptions="Center"
-                                                       IsVisible="{Binding ShowMe, Mode=Default}"
-                                                       IsTabStop="True"
-                                                       HeightRequest="38"
-                                                       BackgroundColor="DodgerBlue"
-                                                       Grid.Row="0"
-                                                       Grid.Column="0">
-                                            <chip:SfButton.Content>
-                                                <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="45" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid Padding="15,0,5,0">
-                                                        <Label Text="&#xE7AC;"
-                                                               HorizontalTextAlignment="Center"
-                                                               VerticalOptions="Center"
-                                                               VerticalTextAlignment="Center"
-                                                               HorizontalOptions="Start"
-                                                               FontSize="19"
-                                                               TextColor="White"
-                                                               FontFamily="{StaticResource FontIcon}" />
+                                </expander:SfExpander.Content>
+                            </expander:SfExpander>
+                        </Grid>
+                        <StackLayout>
+                            <listview:SfListView x:Name="listView" ItemSize="50"
+                                                 ItemsSource="{Binding ColorsObservableCollection, Mode=Default}"
+                                                 ItemTapped="ListView_OnItemTapped"
+                                                 SelectionMode="SingleDeselect"
+                                                 SelectionChanged="ListView_OnSelectionChanged"
+                                                 Loaded="ListView_OnLoaded"
+                                                 SelectionGesture="Tap"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand">
+                                <listview:SfListView.LayoutManager>
+                                    <listview:GridLayout x:Name="gridLayout">
+                                        <listview:GridLayout.SpanCount>
+                                            <OnPlatform x:TypeArguments="x:Int32">
+                                                <On Platform="UWP">
+                                                    <OnIdiom x:TypeArguments="x:Int32"
+                                                             Phone="1"
+                                                             Tablet="2"
+                                                             Desktop="4" />
+                                                </On>
+
+                                                <On Platform="Android">
+                                                    <OnIdiom x:TypeArguments="x:Int32"
+                                                             Phone="2"
+                                                             Tablet="2" />
+                                                </On>
+
+                                                <On Platform="iOS">
+                                                    <OnIdiom x:TypeArguments="x:Int32"
+                                                             Phone="1"
+                                                             Tablet="2" />
+                                                </On>
+                                            </OnPlatform>
+                                        </listview:GridLayout.SpanCount>
+                                    </listview:GridLayout>
+                                </listview:SfListView.LayoutManager>
+                                <listview:SfListView.ItemTemplate>
+                                    <DataTemplate x:DataType="models1:Colors">
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <border:SfBorder BorderColor="{Binding BdColor, Mode=Default}"
+                                                                 BackgroundColor="{Binding BgColor, Mode=Default}"
+                                                                 BorderWidth="3"
+                                                                 Padding="5">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Label Text="{Binding BackGroundColor}"
+                                                               Grid.Column="0"
+                                                               Grid.Row="0"
+                                                               TextColor="{Binding FntColor, Mode=Default}"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center" />
+                                                        <Label Text="{Binding ColorName}"
+                                                               Grid.Column="0"
+                                                               Grid.Row="1"
+                                                               TextColor="{Binding FntColor, Mode=Default}"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center" />
+
                                                     </Grid>
-                                                    <Grid Grid.Column="1">
-                                                        <Label HorizontalOptions="Center"
-                                                               HorizontalTextAlignment="Center"
-                                                               TextColor="White"
-                                                               VerticalTextAlignment="Center"
-                                                               VerticalOptions="Center"
-                                                               LineBreakMode="NoWrap"
-                                                               Text="Move" />
-                                                    </Grid>
-                                                </Grid>
-                                            </chip:SfButton.Content>
-                                        </chip:SfButton>
-                                        <chip:SfButton x:Name="SaveButton"
-                                                       BackgroundColor="DodgerBlue"
-                                                       VerticalOptions="Center"
-                                                       HorizontalOptions="FillAndExpand"
-                                                       HeightRequest="38"
-                                                       Grid.Row="0"
-                                                       Grid.Column="2">
-                                            <chip:SfButton.Content>
-                                                <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="40" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid Padding="10,0,5,0">
-                                                        <Label Text="&#xE74E;"
-                                                               HorizontalTextAlignment="Center"
-                                                               VerticalOptions="Center"
-                                                               VerticalTextAlignment="Center"
-                                                               HorizontalOptions="Start"
-                                                               FontSize="19"
-                                                               TextColor="White"
-                                                               FontFamily="{StaticResource FontIcon}">
-                                                        </Label>
-                                                    </Grid>
-                                                    <Grid Grid.Column="1">
-                                                        <Label HorizontalOptions="Start"
-                                                               HorizontalTextAlignment="Start"
-                                                               TextColor="White"
-                                                               VerticalTextAlignment="Center"
-                                                               VerticalOptions="Center"
-                                                               LineBreakMode="NoWrap"
-                                                               Text="Save">
-                                                        </Label>
-                                                    </Grid>
-                                                </Grid>
-                                            </chip:SfButton.Content>
-                                        </chip:SfButton>
-                                    </Grid>
-                                </StackLayout>
-                            </expander:SfExpander.Content>
-                        </expander:SfExpander>
+                                                </border:SfBorder>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </listview:SfListView.ItemTemplate>
+                            </listview:SfListView>
+                        </StackLayout>
                     </StackLayout>
-                    <StackLayout>
-                        <listview:SfListView x:Name="listView" ItemSize="50"
-                                             ItemsSource="{Binding ColorsObservableCollection, Mode=Default}"
-                                             ItemTapped="ListView_OnItemTapped"
-                                             SelectionMode="SingleDeselect"
-                                             SelectionChanged="ListView_OnSelectionChanged"
-                                             Loaded="ListView_OnLoaded"
-                                             SelectionGesture="Tap"
-                                             HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="FillAndExpand">
-                            <listview:SfListView.LayoutManager>
-                                <listview:GridLayout x:Name="gridLayout">
-                                    <listview:GridLayout.SpanCount>
-                                        <OnPlatform x:TypeArguments="x:Int32">
-                                            <On Platform="UWP">
-                                                <OnIdiom x:TypeArguments="x:Int32"
-                                                         Phone="1"
-                                                         Tablet="2"
-                                                         Desktop="4" />
-                                            </On>
-
-                                            <On Platform="Android">
-                                                <OnIdiom x:TypeArguments="x:Int32"
-                                                         Phone="2"
-                                                         Tablet="2" />
-                                            </On>
-
-                                            <On Platform="iOS">
-                                                <OnIdiom x:TypeArguments="x:Int32"
-                                                         Phone="1"
-                                                         Tablet="2" />
-                                            </On>
-                                        </OnPlatform>
-                                    </listview:GridLayout.SpanCount>
-                                </listview:GridLayout>
-                            </listview:SfListView.LayoutManager>
-                            <listview:SfListView.ItemTemplate>
-                                <DataTemplate x:DataType="models1:Colors">
-                                    <ViewCell>
-                                        <StackLayout>
-                                            <border:SfBorder BorderColor="{Binding BdColor, Mode=Default}"
-                                                             BackgroundColor="{Binding BgColor, Mode=Default}"
-                                                             BorderWidth="3"
-                                                             Padding="5">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Label Text="{Binding BackGroundColor}"
-                                                           Grid.Column="0"
-                                                           Grid.Row="0"
-                                                           TextColor="{Binding FntColor, Mode=Default}"
-                                                           HorizontalOptions="Center"
-                                                           VerticalOptions="Center" />
-                                                    <Label Text="{Binding ColorName}"
-                                                           Grid.Column="0"
-                                                           Grid.Row="1"
-                                                           TextColor="{Binding FntColor, Mode=Default}"
-                                                           HorizontalOptions="Center"
-                                                           VerticalOptions="Center" />
-
-                                                </Grid>
-                                            </border:SfBorder>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </listview:SfListView.ItemTemplate>
-                        </listview:SfListView>
-                    </StackLayout>
-                </StackLayout>
-            </pulltorefresh:SfPullToRefresh.PullableContent>
-        </pulltorefresh:SfPullToRefresh>
+                </pulltorefresh:SfPullToRefresh.PullableContent>
+            </pulltorefresh:SfPullToRefresh>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

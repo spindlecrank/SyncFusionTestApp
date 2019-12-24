@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -114,7 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SyncFusionTestApp\SyncFusionTestApp.csproj">
-      <Project>{14CAE1E7-5FB3-4DD4-9590-E1278447082A}</Project>
+      <Project>{3AD979DB-AAF0-4347-8808-CD1B9D484E01}</Project>
       <Name>SyncFusionTestApp</Name>
     </ProjectReference>
   </ItemGroup>

@@ -84,7 +84,7 @@
                                 <expander:SfExpander x:Name="Expander"
                                                      HeaderBackgroundColor="Transparent"
                                                      BackgroundColor="Transparent"
-                                                     DynamicSizeMode="Content"
+                                                     DynamicSizeMode="{OnPlatform UWP=Content, Android=None, iOS=None}"
                                                      Margin="15,0,15,0"
                                                      IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
                                     <expander:SfExpander.Header>

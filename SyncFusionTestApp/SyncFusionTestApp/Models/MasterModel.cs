@@ -15,7 +15,7 @@ namespace SyncFusionTestApp.Models
             {
                 _listName = value;
 
-                OnPropertyChanged("ListName");
+                OnPropertyChanged(nameof(ListName));
             }
         }
 
@@ -27,7 +27,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _shared = value;
-                OnPropertyChanged("Shared");
+                OnPropertyChanged(nameof(Shared));
             }
         }
 
@@ -40,7 +40,7 @@ namespace SyncFusionTestApp.Models
             {
                 _name = value;
 
-                OnPropertyChanged("Name");
+                OnPropertyChanged(nameof(Name));
             }
         }
         private string _unitOfIssue;
@@ -51,7 +51,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _unitOfIssue = value;
-                OnPropertyChanged("UnitOfIssue");
+                OnPropertyChanged(nameof(UnitOfIssue));
             }
         }
 
@@ -63,7 +63,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _description = value;
-                OnPropertyChanged("Description");
+                OnPropertyChanged(nameof(Description));
             }
         }
 
@@ -76,7 +76,7 @@ namespace SyncFusionTestApp.Models
             {
                 _section = value;
 
-                OnPropertyChanged("ListName");
+                OnPropertyChanged(nameof(ListName));
             }
         }
 
@@ -88,7 +88,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _priority = value;
-                OnPropertyChanged("Priority");
+                OnPropertyChanged(nameof(Priority));
             }
         }
     }

@@ -12,7 +12,7 @@ namespace SyncFusionTestApp.ViewModels
     {
         #region Properties and Fields
 
-        private bool testBool = false;
+        private readonly bool testBool = false;
 
         private string _listName;
 
@@ -37,7 +37,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("ListName");
+                OnPropertyChanged(nameof(ListName));
             }
         }
 
@@ -61,7 +61,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("Shared");
+                OnPropertyChanged(nameof(Shared));
             }
         }
 
@@ -88,7 +88,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("Name");
+                OnPropertyChanged(nameof(Name));
             }
         }
         private string _unitOfIssue;
@@ -111,7 +111,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("UnitOfIssue");
+                OnPropertyChanged(nameof(UnitOfIssue));
             }
         }
 
@@ -135,7 +135,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("Description");
+                OnPropertyChanged(nameof(Description));
             }
         }
 
@@ -162,7 +162,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("Section");
+                OnPropertyChanged(nameof(Section));
             }
         }
 
@@ -186,7 +186,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("Priority");
+                OnPropertyChanged(nameof(Priority));
             }
         }
 
@@ -198,7 +198,7 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _showMe = value;
-                OnPropertyChanged("ShowMe");
+                OnPropertyChanged(nameof(ShowMe));
             }
         }
 
@@ -228,7 +228,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("ListNames");
+                OnPropertyChanged(nameof(ListNames));
             }
         }
 
@@ -260,7 +260,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("Items");
+                OnPropertyChanged(nameof(Items));
             }
         }
 
@@ -290,7 +290,7 @@ namespace SyncFusionTestApp.ViewModels
                     Priority = Priority
                 };
 
-                OnPropertyChanged("Sections");
+                OnPropertyChanged(nameof(Sections));
             }
         }
 
@@ -302,7 +302,7 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _masterModel = value;
-                OnPropertyChanged("MasterModel");
+                OnPropertyChanged(nameof(MasterModel));
             }
         }
 
@@ -312,7 +312,6 @@ namespace SyncFusionTestApp.ViewModels
         private List<ListNames> _namesList = new List<ListNames>();
         private List<Items> _itemsList = new List<Items>();
         private List<Sections> _sectionsList = new List<Sections>();
-        private List<MasterModel> _masterModelList = new List<MasterModel>();
 
         public ObservableCollection<Colors> ColorsObservableCollection { get; set; }
         public ObservableCollection<ListNames> ListNamesObservableCollection { get; set; }

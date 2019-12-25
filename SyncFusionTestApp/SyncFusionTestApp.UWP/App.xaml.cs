@@ -1,3 +1,4 @@
+using Syncfusion.SfPullToRefresh.XForms.UWP;
 using Syncfusion.XForms.UWP.ComboBox;
 using Syncfusion.XForms.UWP.Border;
 using Syncfusion.ListView.XForms.UWP;
@@ -50,11 +51,15 @@ namespace SyncFusionTestApp.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-List<Assembly> assembliesToInclude = new List<Assembly>();
-assembliesToInclude.Add(typeof(SfComboBoxRenderer).GetTypeInfo().Assembly);
-assembliesToInclude.Add(typeof(SfBorderRenderer).GetTypeInfo().Assembly);
-                assembliesToInclude.Add(typeof(SfListViewRenderer).GetTypeInfo().Assembly);
-                assembliesToInclude.Add(typeof(SfExpanderRenderer).GetTypeInfo().Assembly);
+                var assembliesToInclude = new List<Assembly>
+                {
+                    typeof(SfPullToRefreshRenderer).GetTypeInfo().Assembly,
+                    typeof(SfComboBoxRenderer).GetTypeInfo().Assembly,
+                    typeof(SfBorderRenderer).GetTypeInfo().Assembly,
+                    typeof(SfListViewRenderer).GetTypeInfo().Assembly,
+                    typeof(SfExpanderRenderer).GetTypeInfo().Assembly,
+                    typeof(SfBorderRenderer).GetTypeInfo().Assembly
+                };
 
                 Xamarin.Forms.Forms.Init(e, assembliesToInclude);
 

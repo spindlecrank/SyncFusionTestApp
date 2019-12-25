@@ -17,7 +17,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _section = value;
-                OnPropertyChanged("ListName");
+                OnPropertyChanged(nameof(Section));
             }
         }
 
@@ -29,7 +29,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _priority = value;
-                OnPropertyChanged("Priority");
+                OnPropertyChanged(nameof(Priority));
             }
         }
 

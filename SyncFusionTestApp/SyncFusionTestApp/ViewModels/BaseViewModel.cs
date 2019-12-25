@@ -12,7 +12,19 @@ namespace SyncFusionTestApp.ViewModels
             set
             {
                 _isExpanded = value;
-                OnPropertyChanged("IsExpanded");
+                OnPropertyChanged(nameof(IsExpanded));
+            }
+        }
+
+        private bool _isRefreshing;
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
             }
         }
 

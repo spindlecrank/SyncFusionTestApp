@@ -15,7 +15,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged(nameof(Name));
             }
         }
         private string _unitOfIssue;
@@ -26,7 +26,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _unitOfIssue = value;
-                OnPropertyChanged("UnitOfIssue");
+                OnPropertyChanged(nameof(UnitOfIssue));
             }
         }
 
@@ -38,7 +38,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _description = value;
-                OnPropertyChanged("Description");
+                OnPropertyChanged(nameof(Description));
             }
         }
 

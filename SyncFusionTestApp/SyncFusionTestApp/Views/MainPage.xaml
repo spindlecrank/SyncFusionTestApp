@@ -278,37 +278,17 @@
                                                             <OnPlatform x:TypeArguments="GridLength">
                                                                 <On Platform="UWP">
                                                                     <OnIdiom x:TypeArguments="GridLength"
-                                                                             Default="33*" />
+                                                                             Default="66*" />
                                                                 </On>
                                                                 <On Platform="Android">
                                                                     <OnIdiom x:TypeArguments="GridLength"
-                                                                             Tablet="33*"
-                                                                             Phone="33*" />
+                                                                             Tablet="66*"
+                                                                             Phone="66*" />
                                                                 </On>
                                                                 <On Platform="iOS">
                                                                     <OnIdiom x:TypeArguments="GridLength"
-                                                                             Tablet="33*"
-                                                                             Phone="33*" />
-                                                                </On>
-                                                            </OnPlatform>
-                                                        </ColumnDefinition.Width>
-                                                    </ColumnDefinition>
-                                                    <ColumnDefinition>
-                                                        <ColumnDefinition.Width>
-                                                            <OnPlatform x:TypeArguments="GridLength">
-                                                                <On Platform="UWP">
-                                                                    <OnIdiom x:TypeArguments="GridLength"
-                                                                             Default="33*" />
-                                                                </On>
-                                                                <On Platform="Android">
-                                                                    <OnIdiom x:TypeArguments="GridLength"
-                                                                             Tablet="33*"
-                                                                             Phone="33*" />
-                                                                </On>
-                                                                <On Platform="iOS">
-                                                                    <OnIdiom x:TypeArguments="GridLength"
-                                                                             Tablet="33*"
-                                                                             Phone="33*" />
+                                                                             Tablet="66*"
+                                                                             Phone="66*" />
                                                                 </On>
                                                             </OnPlatform>
                                                         </ColumnDefinition.Width>
@@ -334,53 +314,46 @@
                                                         </ColumnDefinition.Width>
                                                     </ColumnDefinition>
                                                 </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
+                                                <Grid.RowDefinitions> 
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
-                                                <chip:SfButton x:Name="MoveButton"
-                                                               HorizontalOptions="FillAndExpand"
-                                                               VerticalOptions="Center"
-                                                               IsVisible="{Binding ShowMe, Mode=Default}"
-                                                               IsTabStop="True"
-                                                               HeightRequest="38"
-                                                               BackgroundColor="DodgerBlue"
+                                                <chip:SfSwitch IsOn="True"
+                                                               VisualType="Custom"
+                                                               BackgroundColor="Transparent"
                                                                Grid.Row="0"
                                                                Grid.Column="0">
-                                                    <chip:SfButton.Content>
-                                                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="45" />
-                                                                <ColumnDefinition Width="*" />
-                                                            </Grid.ColumnDefinitions>
-                                                            <Grid Padding="15,0,5,0">
-                                                                <Label Text="&#xE7AC;"
-                                                                       HorizontalTextAlignment="Center"
-                                                                       VerticalOptions="Center"
-                                                                       VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="Start"
-                                                                       FontSize="19"
-                                                                       TextColor="White"
-                                                                       FontFamily="{StaticResource FontIcon}" />
-                                                            </Grid>
-                                                            <Grid Grid.Column="1">
-                                                                <Label HorizontalOptions="Center"
-                                                                       HorizontalTextAlignment="Center"
-                                                                       TextColor="White"
-                                                                       VerticalTextAlignment="Center"
-                                                                       VerticalOptions="Center"
-                                                                       LineBreakMode="NoWrap"
-                                                                       Text="Move" />
-                                                            </Grid>
-                                                        </Grid>
-                                                    </chip:SfButton.Content>
-                                                </chip:SfButton>
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="On">
+                                                                <VisualState.Setters>
+                                                                    <Setter Property="SwitchSettings">
+                                                                        <Setter.Value>
+                                                                            <chip:MaterialSwitchSettings x:TypeArguments="chip:OnState"
+                                                                                                            ThumbColor="MediumBlue" />
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Off">
+                                                                <VisualState.Setters>
+                                                                    <Setter Property="SwitchSettings">
+                                                                        <Setter.Value>
+                                                                            <chip:MaterialSwitchSettings x:TypeArguments="chip:OffState"
+                                                                                                            ThumbColor="MediumBlue" />
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                </chip:SfSwitch>
                                                 <chip:SfButton x:Name="SaveButton"
                                                                BackgroundColor="DodgerBlue"
                                                                VerticalOptions="Center"
                                                                HorizontalOptions="FillAndExpand"
                                                                HeightRequest="38"
                                                                Grid.Row="0"
-                                                               Grid.Column="2">
+                                                               Grid.Column="1">
                                                     <chip:SfButton.Content>
                                                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
                                                             <Grid.ColumnDefinitions>

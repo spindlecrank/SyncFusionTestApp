@@ -1,3 +1,4 @@
+using Syncfusion.SfPullToRefresh.XForms.iOS;
 using Foundation;
 
 using Syncfusion.ListView.XForms.iOS;
@@ -25,10 +26,13 @@ namespace SyncFusionTestApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfPullToRefreshRenderer.Init();
             SfComboBoxRenderer.Init();
             SfBorderRenderer.Init();
             SfListViewRenderer.Init();
             SfExpanderRenderer.Init();
+            SfBorderRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

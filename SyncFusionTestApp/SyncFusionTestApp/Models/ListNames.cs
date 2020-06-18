@@ -15,7 +15,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _listName = value;
-                OnPropertyChanged("ListName");
+                OnPropertyChanged(nameof(ListName));
             }
         }
 
@@ -27,7 +27,7 @@ namespace SyncFusionTestApp.Models
             set
             {
                 _shared = value;
-                OnPropertyChanged("Shared");
+                OnPropertyChanged(nameof(Shared));
             }
         }
 

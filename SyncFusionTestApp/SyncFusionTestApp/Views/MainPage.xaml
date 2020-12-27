@@ -71,7 +71,7 @@
                                         <Label x:Name="TitleLabel"
                                                    Text="Sample App"
                                                    TextColor="White"
-                                                   FontFamily="{StaticResource RobotoBold}"
+                                                   FontFamily="RobotoBold"
                                                    HeightRequest="40"
                                                    BackgroundColor="Transparent"
                                                    HorizontalOptions="FillAndExpand"
@@ -94,7 +94,7 @@
                                                 FontSize="16"
                                                 TextColor="Black"
                                                 FontAttributes="Bold"
-                                                FontFamily="{StaticResource RobotoBold}"
+                                                FontFamily="RobotoBold"
                                                 LineBreakMode="WordWrap"
                                                 HorizontalOptions="CenterAndExpand"
                                                 VerticalOptions="Center"
@@ -105,7 +105,7 @@
                                                    FontSize="16"
                                                    TextColor="Black"
                                                    FontAttributes="Bold"
-                                                   FontFamily="{StaticResource RobotoBold}"
+                                                   FontFamily="RobotoBold"
                                                    LineBreakMode="WordWrap"
                                                    HorizontalOptions="CenterAndExpand"
                                                    VerticalOptions="Center"
@@ -120,7 +120,7 @@
                                                                  Margin="15,5,15,5"
                                                                  x:Name="ComboBox"
                                                                  SelectionChanged="ComboBox_OnSelectionChanged"
-                                                                 FontFamily="{StaticResource RobotoBold}"
+                                                                 FontFamily="RobotoBold"
                                                                  IsEditableMode="False"
                                                                  DataSource="{Binding ListNamesObservableCollection, Mode=Default}"
                                                                  DisplayMemberPath="ListName"
@@ -152,7 +152,7 @@
                                                             <Label x:Name="ListItemLabel"
                                                                    Text="{Binding Name, Mode=Default}"
                                                                    TextColor="Black"
-                                                                   FontFamily="{StaticResource RobotoBold}"
+                                                                   FontFamily="RobotoBold"
                                                                    VerticalTextAlignment="Center"
                                                                    Margin="5,0" />
                                                         </StackLayout>
@@ -245,7 +245,7 @@
                                                                 <Label x:Name="SectionNameLabel"
                                                                        Text="{Binding Section, Mode=Default}"
                                                                        TextColor="Black"
-                                                                       FontFamily="{StaticResource RobotoBold}"
+                                                                       FontFamily="RobotoBold"
                                                                        VerticalTextAlignment="Center"
                                                                        Margin="5,0" />
                                                             </StackLayout>
@@ -368,7 +368,7 @@
                                                                        HorizontalOptions="Start"
                                                                        FontSize="19"
                                                                        TextColor="White"
-                                                                       FontFamily="{StaticResource FontIcon}">
+                                                                       FontFamily="FontIcon">
                                                                 </Label>
                                                             </Grid>
                                                             <Grid Grid.Column="1">

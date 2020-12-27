@@ -3,43 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:SyncFusionTestApp.Views;assembly=SyncFusionTestApp"
              mc:Ignorable="d"
              x:Class="SyncFusionTestApp.Views.MDPTestMaster"
-             Title="Master">
-  <StackLayout>
+             Title="Master"
+             IconImageSource="{StaticResource Hamburger}">
+  <StackLayout BackgroundColor="DodgerBlue">
     <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
+              BackgroundColor="Transparent"
               HasUnevenRows="true"
-              ItemsSource="{Binding MenuItems}">
-	    <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
+              ItemsSource="{Binding MenuItems, Mode=Default}">
+      <ListView.Header>
+        <Grid>
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1" />
           </Grid.RowDefinitions>
           <Label
-              Grid.Column="1"
-              Grid.Row="2"
-              Text="AppName"
-              Style="{DynamicResource SubtitleStyle}"/>
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="Grocery List"
+                        FontSize="34" />
+          <BoxView Grid.Row="3"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="3"
+                             HeightRequest="1"
+                             BackgroundColor="White" />
         </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="views:MDPTestMasterMenuItem">
           <ViewCell>
-            <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+            <StackLayout Padding="15,10"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand">
+              <Image VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Source="{Binding IconSource, Mode=Default}" />
               <Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
-                    d:Text="{Binding .}"
-                    FontSize="24"/>
+                    Text="{Binding Title, Mode=Default}"
+                    TextColor="Black"
+                    FontSize="22"/>
             </StackLayout>
           </ViewCell>
         </DataTemplate>

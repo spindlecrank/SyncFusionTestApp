@@ -7,20 +7,21 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              mc:Ignorable="d"
              x:Class="SyncFusionTestApp.App">
-    <Application.Resources>
-        <ResourceDictionary>
-            <OnPlatform x:TypeArguments="x:String" x:Key="Pickerunselected_RobotoRegular">
-                <On Platform="UWP" Value="Assets/Fonts/Roboto-Regular.ttf#Roboto" />
-                <On Platform="Android" Value="Roboto-Regular.ttf" />
-                <On Platform="iOS" Value="Roboto-Regular" />
-            </OnPlatform>
+	<Application.Resources>
+		<ResourceDictionary>
+			<!--<OnPlatform x:TypeArguments="x:String" x:Key="Pickerunselected_RobotoRegular">
+                    <On Platform="UWP" Value="Assets/Fonts/Roboto-Regular.ttf#Roboto" />
+                    <On Platform="Android" Value="Roboto-Regular.ttf" />
+                    <On Platform="iOS" Value="Roboto-Regular" />
+                </OnPlatform>
             <OnPlatform x:TypeArguments="x:String" x:Key="Pickerselected_RobotoBold">
-                <On Platform="UWP" Value="Assets/Fonts/Roboto-Bold.ttf#Roboto" />
-                <On Platform="Android" Value="Roboto-Bold.ttf" />
-                <On Platform="iOS" Value="Roboto-Bold" />
-            </OnPlatform>
+                    <On Platform="UWP" Value="Assets/Fonts/Roboto-Bold.ttf#Roboto" />
+                    <On Platform="Android" Value="Roboto-Bold.ttf" />
+                    <On Platform="iOS" Value="Roboto-Bold" />
+                </OnPlatform>
             <OnPlatform x:TypeArguments="x:String" x:Key="FontIcon">
                 <On Platform="Android" Value="Segoe_MDL2_Assets.ttf#Segoe MDL2 Assets" />
                 <On Platform="UWP" Value="Assets/Fonts/Segoe_MDL2_Assets.ttf#Segoe MDL2 Assets" />
@@ -35,8 +36,8 @@
                 <On Platform="UWP" Value="Assets/Fonts/Roboto-Bold.ttf#Roboto" />
                 <On Platform="Android" Value="Roboto-Bold.ttf#Roboto Bold" />
                 <On Platform="iOS" Value="Roboto-Bold" />
-            </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String" x:Key="AwsomeIcon">
+            </OnPlatform>-->
+			<!--<OnPlatform x:TypeArguments="x:String" x:Key="AwsomeIcon">
                 <On Platform="Android" Value="FontAwesome5Free-Regular.otf#Font Awesome 5 Free Regular" />
                 <On Platform="UWP" Value="/Assets/Fonts/FontAwesome5Free-Regular.otf#Font Awesome 5 Free" />
                 <On Platform="iOS" Value="FontAwesome5Free-Regular" />
@@ -50,211 +51,221 @@
                 <On Platform="Android" Value="FontAwesome5Brands-Regular.otf#Font Awesome 5 Free Brands Regular" />
                 <On Platform="UWP" Value="/Assets/Fonts/FontAwesome5Brands-Regular.otf#Font Awesome 5 Free Brands" />
                 <On Platform="iOS" Value="FontAwesome5Brands-Regular" />
-            </OnPlatform>
-            <FontImageSource x:Key="Clear"
-                             FontFamily="{StaticResource FontIcon}" 
+            </OnPlatform>-->
+			<FontImageSource x:Key="Clear"
+                             FontFamily="FontIcon" 
                              Glyph="&#xE894;" 
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Refresh"
+			<FontImageSource x:Key="Refresh"
                              Glyph="&#xE895;"
                              Size="20"
                              Color="White" 
-                             FontFamily="{StaticResource FontIcon}" />
-            <FontImageSource x:Key="Delete"
-                             FontFamily="{StaticResource FontIcon}"
+                             FontFamily="FontIcon" />
+			<FontImageSource x:Key="Delete"
+                             FontFamily="FontIcon"
                              Glyph="&#xE74D;"
                              Size="25"
                              Color="White" />
-            <FontImageSource x:Key="Print"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Print"
+                             FontFamily="FontIcon"
                              Glyph="&#xE749;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Account"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Account"
+                             FontFamily="FontIcon"
                              Glyph="&#xE77B;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Cart"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Cart"
+                             FontFamily="FontIcon"
                              Glyph="&#xE7BF;"
-                             Size="16"
+                             Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Home"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Home"
+                             FontFamily="FontIcon"
                              Glyph="&#xE80F;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Section"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Section"
+                             FontFamily="FontIcon"
                              Glyph="&#xE819;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="List"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="List"
+                             FontFamily="FontIcon"
                              Glyph="&#xE8FD;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Info"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Info"
+                             FontFamily="FontIcon"
                              Glyph="&#xE946;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Help"
-                             FontFamily="{StaticResource FontIcon}"
-                             Glyph="&#xE9CE;"
+			<FontImageSource x:Key="Help"
+                             FontFamily="faregular"
+                             Glyph="&#xf059;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Options"
-                             FontFamily="{StaticResource FontIcon}"
-                             Glyph="&#xE9E9;"
+			<FontImageSource x:Key="Options"
+                             FontFamily="FontIcon"
+                             Glyph="&#xE713;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="CacheImage"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="CacheImage"
+                             FontFamily="FontIcon"
                              Glyph="&#xEB9F;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Category"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Category"
+                             FontFamily="FontIcon"
                              Glyph="&#xEC09;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="ListName"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="ListName"
+                             FontFamily="FontIcon"
                              Glyph="&#xE71D;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Camera"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Camera"
+                             FontFamily="FontIcon"
                              Glyph="&#xE722;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Share"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Share"
+                             FontFamily="FontIcon"
                              Glyph="&#xE72D;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Email"
-                             FontFamily="{StaticResource FontIcon}"
+			<FontImageSource x:Key="Email"
+                             FontFamily="FontIcon"
                              Glyph="&#xE910;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Excel"
-                             FontFamily="{StaticResource AwsomeIcon}"
+			<FontImageSource x:Key="Excel"
+                             FontFamily="faregular"
                              Glyph="&#xf1c3;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Database"
-                             FontFamily="{StaticResource AwsomeIconSolid}"
+			<FontImageSource x:Key="Database"
+                             FontFamily="fasolid"
                              Glyph="&#xf1c0;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Table"
-                             FontFamily="{StaticResource AwsomeIconSolid}"
+			<FontImageSource x:Key="Table"
+                             FontFamily="fasolid"
                              Glyph="&#xf0ce;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Hamburger"
-                             FontFamily="{StaticResource AwsomeIconSolid}"
+			<FontImageSource x:Key="Hamburger"
+                             FontFamily="fasolid"
                              Glyph="&#xf0c9;"
                              Size="20"
                              Color="White" />
-            <FontImageSource x:Key="Chart"
-                             FontFamily="{StaticResource AwsomeIconSolid}"
+			<FontImageSource x:Key="Chart"
+                             FontFamily="fasolid"
                              Glyph="&#xf080;"
                              Size="20"
                              Color="White" />
-            <Style TargetType="NavigationPage"
+			<Style TargetType="NavigationPage"
                    ApplyToDerivedTypes="True">
-                <Setter Property="BarBackgroundColor" Value="DodgerBlue"/>
-                <Setter Property="BarTextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="GhostWhite" />
-            </Style>
-            <Style TargetType="ContentPage"
+				<Setter Property="BarBackgroundColor" Value="DodgerBlue"/>
+				<Setter Property="BarTextColor" Value="White" />
+				<Setter Property="BackgroundColor" Value="GhostWhite" />
+			</Style>
+			<Style TargetType="ContentPage"
                    ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor"
+				<Setter Property="BackgroundColor"
                         Value="GhostWhite" />
-            </Style>
-            <Style TargetType="buttons:SfChip">
-                <Setter Property="FontFamily" Value="{StaticResource RobotoBold}" />
-                <Setter Property="HasShadow" Value="True" />
-                <Setter Property="ShadowColor" Value="DarkSlateGray" />
-                <Setter Property="SelectionIndicatorColor" Value="White" />
-                <Setter Property="FontSize" Value="16" />
-            </Style>
-            <Style TargetType="buttons:SfButton">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
-                <Setter Property="CornerRadius" Value="5" />
-                <Setter Property="BackgroundColor" Value="DodgerBlue" />
-                <Setter Property="HasShadow" Value="True" />
-                <Setter Property="ShadowColor" Value="Gray" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="HorizontalTextAlignment" Value="Center" />
-                <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="IsTabStop" Value="True" />
-            </Style>
-            <Style TargetType="BoxView">
-                <Setter Property="BackgroundColor"
+			</Style>
+			<Style TargetType="buttons:SfChip">
+				<Setter Property="FontFamily" Value="RobotoRegular" />
+				<Setter Property="HasShadow" Value="True" />
+				<Setter Property="ShadowColor" Value="DarkSlateGray" />
+				<Setter Property="SelectionIndicatorColor" Value="White" />
+				<Setter Property="FontSize" Value="16" />
+			</Style>
+			<Style TargetType="buttons:SfButton">
+				<Setter Property="FontSize" Value="16" />
+				<Setter Property="FontFamily" Value="RobotoRegular" />
+				<Setter Property="CornerRadius" Value="5" />
+				<Setter Property="BackgroundColor" Value="DodgerBlue" />
+				<Setter Property="HasShadow" Value="True" />
+				<Setter Property="ShadowColor" Value="Gray" />
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="IsTabStop" Value="True" />
+			</Style>
+			<Style TargetType="BoxView">
+				<Setter Property="BackgroundColor"
                         Value="SlateGray" />
-                <Setter Property="HeightRequest"
+				<Setter Property="HeightRequest"
                         Value="2" />
-                <Setter Property="HorizontalOptions"
+				<Setter Property="HorizontalOptions"
                         Value="FillAndExpand" />
-                <Setter Property="Margin"
+				<Setter Property="Margin"
                         Value="10,0,10,0" />
-            </Style>
-            <Style TargetType="ListView">
-                <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="SeparatorColor" Value="Black" />
-                <Setter Property="Footer" Value="" />
-            </Style>
-            <Style TargetType="xForms:SfListView">
-                <Setter Property="AutoFitMode"
+			</Style>
+			<Style TargetType="ListView">
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="SeparatorColor" Value="Black" />
+				<Setter Property="Footer" Value="" />
+			</Style>
+			<Style TargetType="xForms:SfListView">
+				<Setter Property="AutoFitMode"
                         Value="DynamicHeight" />
-                <Setter Property="ColumnSpacing"
+				<Setter Property="ColumnSpacing"
                         Value="15" />
-                <Setter Property="HorizontalOptions"
+				<Setter Property="HorizontalOptions"
                         Value="FillAndExpand" />
-                <Setter Property="VerticalOptions"
+				<Setter Property="VerticalOptions"
                         Value="FillAndExpand" />
-            </Style>
-            <Style TargetType="Entry">
-                <Setter Property="BackgroundColor"
+			</Style>
+			<Style TargetType="Entry">
+				<Setter Property="BackgroundColor"
                         Value="Transparent" />
-                <Setter Property="PlaceholderColor"
+				<Setter Property="PlaceholderColor"
                         Value="Black" />
-                <Setter Property="IsTextPredictionEnabled"
+				<Setter Property="IsTextPredictionEnabled"
                         Value="True" />
-                <Setter Property="TextColor"
+				<Setter Property="TextColor"
                         Value="Black" />
-                <Setter Property="FontSize"
+				<Setter Property="FontSize"
                         Value="16" />
-                <Setter Property="FontFamily"
-                        Value="{StaticResource RobotoBold}" />
-                <Setter Property="IsTabStop"
+				<Setter Property="FontFamily"
+                        Value="RobotoBold" />
+				<Setter Property="IsTabStop"
                         Value="True" />
-            </Style>
-            <Style TargetType="border:SfBorder">
-                <Setter Property="CornerRadius"
+			</Style>
+			<Style TargetType="border:SfBorder">
+				<Setter Property="CornerRadius"
                         Value="5" />
-                <Setter Property="BorderWidth"
+				<Setter Property="BorderWidth"
                         Value="2" />
-            </Style>
-            <Style TargetType="Label">
-                <Setter Property="FontSize"
+			</Style>
+			<Style TargetType="Label">
+				<Setter Property="FontSize"
                         Value="16" />
-                <Setter Property="FontFamily"
-                        Value="{StaticResource RobotoRegular}" />
-                <Setter Property="TextColor"
+				<Setter Property="FontFamily"
+                        Value="RobotoRegular" />
+				<Setter Property="TextColor"
                         Value="White" />
-            </Style>
-            <Style TargetType="textInputLayout:LabelStyle">
-                <Setter Property="FontFamily"
-                        Value="{StaticResource RobotoBold}" />
-            </Style>
-        </ResourceDictionary>
-    </Application.Resources>
+			</Style>
+			<Style TargetType="comboBox:SfComboBox">
+				<Setter Property="FontFamily"
+                        Value="RobotoBold" />
+				<Setter Property="TextSize"
+                        Value="16" />
+				<Setter Property="IsTabStop"
+                        Value="True" />
+				<Setter Property="DropDownItemFontFamily"
+                        Value="RobotoRegular" />
+			</Style>
+			<Style TargetType="textInputLayout:LabelStyle">
+				<Setter Property="FontFamily"
+                        Value="RobotoBold" />
+			</Style>
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>

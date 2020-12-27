@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SyncFusionTestApp.Views
 {
@@ -15,7 +12,7 @@ namespace SyncFusionTestApp.Views
           }
           public int Id { get; set; }
           public string Title { get; set; }
-
+          public FontImageSource IconSource { get; set; }
           public Type TargetType { get; set; }
      }
 }

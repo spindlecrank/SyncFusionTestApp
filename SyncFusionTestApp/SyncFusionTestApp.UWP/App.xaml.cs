@@ -58,7 +58,8 @@ namespace SyncFusionTestApp.UWP
                     typeof(SfBorderRenderer).GetTypeInfo().Assembly,
                     typeof(SfListViewRenderer).GetTypeInfo().Assembly,
                     typeof(SfExpanderRenderer).GetTypeInfo().Assembly,
-                    typeof(SfBorderRenderer).GetTypeInfo().Assembly
+                    typeof(SfBorderRenderer).GetTypeInfo().Assembly,
+                    typeof(SyncFusionTestApp.App).GetTypeInfo().Assembly
                 };
 
                 Xamarin.Forms.Forms.Init(e, assembliesToInclude);

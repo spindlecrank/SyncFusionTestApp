@@ -30,7 +30,7 @@
           <Label
                         Grid.Column="1"
                         Grid.Row="2"
-                        Text="Grocery List"
+                        Text="Test"
                         FontSize="34" />
           <BoxView Grid.Row="3"
                              Grid.Column="0"

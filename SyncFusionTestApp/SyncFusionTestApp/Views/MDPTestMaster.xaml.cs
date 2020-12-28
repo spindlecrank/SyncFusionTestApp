@@ -1,6 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,7 +18,7 @@ namespace SyncFusionTestApp.Views
                ListView = MenuItemsListView;
           }
 
-          public class MDPTestMasterViewModel : INotifyPropertyChanged
+          public class MDPTestMasterViewModel
           {
                public ObservableCollection<MDPTestMasterMenuItem> MenuItems { get; set; }
 
@@ -36,24 +34,17 @@ namespace SyncFusionTestApp.Views
                                    Title = "Home",
                                    IconSource = Application.Current.Resources["Home"] as FontImageSource,
                                    TargetType = typeof(MainPage)
+                              },
+                              new MDPTestMasterMenuItem()
+                              {
+                                   Id = 1,
+                                   Title = "App Info",
+                                   IconSource = Application.Current.Resources["Info"] as FontImageSource,
+                                   TargetType = typeof(AppInfoView)
                               }
-
-
                          });
                     }
                }
-               
-
-               #region INotifyPropertyChanged Implementation
-               public event PropertyChangedEventHandler PropertyChanged;
-               void OnPropertyChanged([CallerMemberName] string propertyName = "")
-               {
-                    if (PropertyChanged == null)
-                         return;
-
-                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-               }
-               #endregion
           }
      }
 }

@@ -16,10 +16,7 @@ namespace SyncFusionTestApp
     {
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(
-                "MzY3OTU0QDMxMzgyZTM0MmUzMFRCYy9QZ3pDV0RXTEk0UXVDUDVRMmRDVXlleFFYdmJTM25zUnQrRkpBMnM9");
-
-               InitializeComponent();
+           InitializeComponent();
 
             MainPage = new MDPTest();
         }

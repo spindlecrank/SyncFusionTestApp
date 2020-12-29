@@ -24,26 +24,23 @@ namespace SyncFusionTestApp.Views
 
                public MDPTestMasterViewModel()
                {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    MenuItems = new ObservableCollection<MDPTestMasterMenuItem>(new[]
                     {
-                         MenuItems = new ObservableCollection<MDPTestMasterMenuItem>(new[]
+                         new MDPTestMasterMenuItem()
                          {
-                              new MDPTestMasterMenuItem()
-                              {
-                                   Id = 0,
-                                   Title = "Home",
-                                   IconSource = Application.Current.Resources["Home"] as FontImageSource,
-                                   TargetType = typeof(MainPage)
-                              },
-                              new MDPTestMasterMenuItem()
-                              {
-                                   Id = 1,
-                                   Title = "App Info",
-                                   IconSource = Application.Current.Resources["Info"] as FontImageSource,
-                                   TargetType = typeof(AppInfoView)
-                              }
-                         });
-                    }
+                              Id = 0,
+                              Title = "Home",
+                              IconSource = Application.Current.Resources["Home"] as FontImageSource,
+                              TargetType = typeof(MainPage)
+                         },
+                         new MDPTestMasterMenuItem()
+                         {
+                              Id = 1,
+                              Title = "App Info",
+                              IconSource = Application.Current.Resources["Info"] as FontImageSource,
+                              TargetType = typeof(AppInfoView)
+                         }
+                    });
                }
           }
      }
